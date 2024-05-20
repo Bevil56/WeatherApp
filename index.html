@@ -1,95 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 
+        - #Primary tags
+    -->
+    <title>Skystery</title>
+    <meta name="title" content="Skystery" />
+    <meta name="description" content="Unveil the Secrets of the Sky" />
+    <!--
+        - #Icon
+    -->
+    <link rel="shortcut icon" href="./icon.svg" type="image/svg+xml" />
+    <!--
+        - #Font
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap"
+    />
+    <!-- 
+        - #Style
+    -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- 
+        - #Js
+    -->
+    <script src="./assets/js/app.js" type="module"></script>
+    <script src="./assets/js/route.js" type="module"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 
-        - Primary tags
-    -->
-  <title>Skystery</title>
-  <meta name="title" content="Skystery" />
-  <meta name="description" content="Unveil the Secrets of the Sky" />
-  <!--
-        - Icon
-    -->
-  <link rel="shortcut icon" href="./sky.svg" type="image/svg+xml" />
-  <!--
-        - Font
-    -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" />
-  <!-- 
-        - Style
-    -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <!-- 
-        - Js
-    -->
-  <script src="./assets/js/app.js" type="module"></script>
-  <script src="./assets/js/route.js" type="module"></script>
-</head>
-
-<body>
-  <!-- 
-      -#HEADER
+  <body>
+    <!-- 
+      - #HEADER
      -->
-  <header class="header">
-    <div class="container">
+    <header class="header">
+      <div class="container">
+        <a href="#" class="logo">
+          <img
+            src="./assets/images/Skystery.png"
+            width="490"
+            height="240"
+            alt="logo"
+          />
+        </a>
+        <div class="search-view" data-search-view>
+          <div class="search-wrapper">
+            <input
+              type="search"
+              name="search"
+              placeholder="Search city..."
+              autocomplete="off"
+              class="search-field"
+              data-search-field
+            />
 
-      <a href="#" class="logo">
-        <img src="./assets/images/Skystery.png" width="490" height="240" alt="logo" />
-      </a>
-      <div class="search-view" data-search-view>
+            <span class="m-icon">search</span>
 
-        <div class="search-wrapper">
+            <button
+              class="icon-btn leading-icon has-state"
+              aria-label="close search"
+              data-search-toggler
+            >
+              <span class="m-icon">arrow_back</span>
+            </button>
+          </div>
+          <div class="search-result" data-search-result>
+            <ul class="view-list" data-search-list>
+              <li class="view-item">
+                <span class="m-icon">location_on</span>
 
-          <input type="search" name="search" placeholder="Search city..." autocomplete="off" class="search-field"
-            data-search-field />
+                <div>
+                  <p class="item-title">Ho Chi Minh</p>
 
-          <span class="m-icon">search</span>
+                  <p class="label-2 item-subtitle">Ho Chi Minh, VN</p>
+                </div>
 
-          <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
-            <span class="m-icon">arrow_back</span>
+                <a href="#" class="item-link has-state" data-search-toggler>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button
+            class="icon-btn has-state"
+            aria-label="open search"
+            data-search-toggler
+          >
+            <span class="m-icon icon">search</span>
           </button>
 
-        </div>
-        <div class="search-result" data-search-result>
+          <a
+            href="#/current-location"
+            class="btn-primary has-state"
+            data-current-location-btn
+          >
+            <span class="m-icon">my_location</span>
 
-          <ul class="view-list" data-search-list>
-            <li class="view-item">
-              <span class="m-icon">location_on</span>
-  
-              <div>
-                <p class="item-title">London</p>
-                
-                <p class="label-2 item-subtitle">London, GB</p>
+            <span class="span">Current Location</span>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article class="container">
+        <div class="content-left">
+          <!-- 
+          - #CURRENT WEATHER
+         -->
+          <section
+            class="section current-weather"
+            aria-label="current weather"
+            data-current-weather
+          >
+            <div class="card card-lg current-weather-card">
+              <h2 class="title-2 card-title">Now</h2>
+              <div class="weapper">
+                <p class="heading">25&deg;<sup>c</sup></p>
+
+                <img
+                  src="./assets/images/weather_icons/01d.png"
+                  width="64"
+                  height="64"
+                  alt="Overcast Clouds"
+                  class="weather-icon"
+                />
               </div>
-  
-              <a href="#" class="item-link has-state" data-search-toggler>
-              </a>
-            </li>
-          </ul>
+
+              <p class="body-3">Overcast Clouds</p>
+
+              <ul class="meta-list">
+                <li class="meta-item">
+                  <span class="m-icon">calendar_today</span>
+
+                  <p class="title-3 meta-text">Monday 21, May</p>
+                </li>
+
+                <li class="meta-item">
+                  <span class="m-icon">location_on</span>
+
+                  <p class="title-3 meta-text">Ho Chi Minh, VN</p>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 
+          - #FORECAST
+          -->
+          <section
+            class="section forecast"
+            aria-labelledby="forecast-label"
+            data-5-day-forecast
+          >
+            <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
+
+            <div class="card card-lg forecast-card">
+              <ul>
+                <li class="card-item">
+                  <div class="icon-wrapper">
+                    <img
+                      src="./assets/images/weather_icons/01n.png"
+                      width="36"
+                      height="36"
+                      alt="Overcast Clouds"
+                      class="weather-icon"
+                    />
+
+                    <span class="span">
+                      <p class="title-2">25</p>
+                    </span>
+                  </div>
+
+                  <p class="label-1">22 May</p>
+
+                  <p class="label-1">Tuesday</p>
+                </li>
+
+                <li class="card-item">
+                  <div class="icon-wrapper">
+                    <img
+                      src="./assets/images/weather_icons/01n.png"
+                      width="36"
+                      height="36"
+                      alt="Overcast Clouds"
+                      class="weather-icon"
+                    />
+
+                    <span class="span">
+                      <p class="title-2">25</p>
+                    </span>
+                  </div>
+                  <p class="label-1">22 May</p>
+
+                  <p class="label-1">Tuesday</p>
+                </li>
+
+                <li class="card-item">
+                  <div class="icon-wrapper">
+                    <img
+                      src="./assets/images/weather_icons/01n.png"
+                      width="36"
+                      height="36"
+                      alt="Overcast Clouds"
+                      class="weather-icon"
+                    />
+
+                    <span class="span">
+                      <p class="title-2">25</p>
+                    </span>
+                  </div>
+                  <p class="label-1">22 May</p>
+
+                  <p class="label-1">Tuesday</p>
+                </li>
+
+                <li class="card-item">
+                  <div class="icon-wrapper">
+                    <img
+                      src="./assets/images/weather_icons/01n.png"
+                      width="36"
+                      height="36"
+                      alt="Overcast Clouds"
+                      class="weather-icon"
+                    />
+
+                    <span class="span">
+                      <p class="title-2">25</p>
+                    </span>
+                  </div>
+                  <p class="label-1">22 May</p>
+
+                  <p class="label-1">Tuesday</p>
+                </li>
+
+                <li class="card-item">
+                  <div class="icon-wrapper">
+                    <img
+                      src="./assets/images/weather_icons/01n.png"
+                      width="36"
+                      height="36"
+                      alt="Overcast Clouds"
+                      class="weather-icon"
+                    />
+
+                    <span class="span">
+                      <p class="title-2">25</p>
+                    </span>
+                  </div>
+                  <p class="label-1">22 May</p>
+
+                  <p class="label-1">Tuesday</p>
+                </li>
+              </ul>
+            </div>
+          </section>
         </div>
-
-      </div>
-      <div class="header-actions">
-
-        <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
-          <span class="m-icon icon">search</span>
-        </button>
-
-        <a href="#/current-location" class="btn-primary has-state" data-current-location-btn>
-
-          <span class="m-icon">my_location</span>
-
-          <span class="span">Current Location</span>
-
-        </a>
-      </div>
-    </div>
-  </header>
-</body>
-
+      </article>
+    </main>
+  </body>
 </html>
