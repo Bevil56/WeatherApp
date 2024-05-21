@@ -365,7 +365,7 @@ body {
   height: 100svh;
   background-color: var(--surface);
   color: var(--on-surface);
-  clip-path: circle(4% at calc(100% -102px) 5%);
+  clip-path: circle(4% at calc(100% - 102px) 5%);
   opacity: 0;
   visibility: hidden;
   z-index: 4;
@@ -649,3 +649,35 @@ article.container::before{
 
 .highlight-card.two .label-1 { margin-block-end: 4px; }
 
+/* #HOURLY FORECAST */
+
+.slider-container {
+  overflow-x: auto;
+  margin-inline: -16px;
+}
+
+.slider-container::-webkit-scrollbar { display: none; }
+
+.slider-list {
+  display: flex;
+  gap: 12px;
+}
+
+
+.slider-list::before,
+.slider-list::after {
+  content: "";
+  min-width: 4px;
+}
+
+.slider-item {
+  min-width: 110px;
+  flex: 1 1 100%;
+}
+
+.slider-card { text-align: center; }
+
+.slider-item .weather-icon {
+  margin-inline: auto;
+  margin-block: 12px;
+}
