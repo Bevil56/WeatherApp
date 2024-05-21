@@ -2,29 +2,29 @@
   /**
     *COLOR
     */
-  --primary: #5493e0;
-  --on-primary: #100e17;
-  --background: #131214;
-  --on-background: #eae6f2;
-  --surface: #1d1c1f;
-  --on-surface: #dddae5;
-  --on-surface-variant: #7b7980;
-  --on-surface-variant-2: #b9b6bf;
-  --outline: #3e3d40;
-  --bg-aqi-1: #89e589;
-  --on-bg-aqi-1: #1f331f;
-  --bg-aqi-2: #e5dd89;
-  --on-bg-aqi-2: #33311f;
-  --bg-aqi-3: #e5c089;
-  --on-bg-aqi-3: #332b1f;
-  --bg-aqi-4: #e58989;
-  --on-bg-aqi-4: #331f1f;
-  --bg-aqi-5: #e589b7;
-  --on-bg-aqi-5: #331f29;
-  --white: hsl(0, 0%, 100%);
-  --white-alpha-4: hsla(0, 0%, 100%, 0.04);
-  --white-alpha-8: hsla(0, 0%, 100%, 0.08);
-  --black-alpha-10: ;
+    --primary: #5493e0;
+    --on-primary: #100E17; 
+    --background: #131214;
+    --on-background: #EAE6F2;
+    --surface: #1D1C1F;
+    --on-surface: #DDDAE5;
+    --on-surface-variant: #7B7980; 
+    --on-surface-variant-2: #B9B6BF;
+    --outline: #3E3D40;
+    --bg-aqi-1: #89E589;
+    --on-bg-aqi-1: #1F331F;
+    --bg-aqi-2: #E5DD89;
+    --on-bg-aqi-2: #33311F;
+    --bg-aqi-3: #E5C089;
+    --on-bg-aqi-3: #332B1F;
+    --bg-aqi-4: #E58989;
+    --on-bg-aqi-4: #331F1F;
+    --bg-aqi-5: #E589B7;
+    --on-bg-aqi-5: #331F29;
+    --white: hsl(0, 0%, 100%);
+    --white-alpha-4: hsla(0, 0%, 100%, 0.04);
+    --white-alpha-8: hsla(0, 0%, 100%, 0.08);
+    --black-alpha-10: hsla(0, 0%, 0%, 0.1);
 
   /* gradient color */
   --gradient-1: linear-gradient(
@@ -169,6 +169,8 @@ body {
   background-color: var(--white-alpha-8);
   border-radius: var(--radius-pill);
 }
+
+/* #Material icon */
 @font-face {
   font-family: 'Material Symbols Rounded';
   font-style: normal;
@@ -185,6 +187,7 @@ body {
   letter-spacing: normal;
   text-transform: none;
   white-space: nowrap;
+  word-wrap: normal;
   direction: ltr;
   font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
@@ -458,8 +461,8 @@ body {
 
 /* #MAIN */
 main{
-  height: calc(100vh-80px);
-  height: calc(100svh-80px); /* mobile */
+  height: calc(100vh - 80px);
+  height: calc(100svh - 80px); /* mobile */
   overflow: hidden;
 }
 
@@ -468,7 +471,7 @@ article.container{
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 20px;
-  height: calc(100vh - 80px);
+  height: 100%;
   overflow-y: auto; /*firefox*/
   overflow-y: overlay;
 }
@@ -535,6 +538,8 @@ article.container::before{
   columns: var(--on-surface-variant);
 }
 
+/* #FORECAST HIGHLIGHTS  */
+
 .forecast-card .title-2{ margin-block-end: 0;}
 
 .forecast-card :is(.card-item, .icon-wrapper){
@@ -557,4 +562,90 @@ article.container::before{
   width: 100%;
   text-align: right;
 }
+
+/* #HOURLY FORECAST  */
+
+.highlights .m-icon { font-size: 3.2rem; }
+
+.highlight-list {
+  display: grid;
+  gap: 20px;
+}
+
+.highlight-list .title-3 {
+  color: var(--on-surface-variant);
+  margin-block-end: 20px;
+}
+
+.highlights .card-sm {
+  background-color: var(--black-alpha-10);
+  position: relative;
+}
+
+.highlight-card :is(.wrapper, .card-list, .card-item) {
+  display: flex;
+  align-items: center;
+}
+
+.highlight-card .wrapper {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.highlight-card .card-list {
+  flex-wrap: wrap;
+  flex-grow: 1;
+  row-gap: 8px;
+}
+
+.highlight-card .card-item {
+  width: 50%;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.highlight-card .label-1 { color: var(--on-surface-variant); }
+
+.badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 2px 12px;
+  border-radius: var(--radius-pill);
+  font-weight: var(--weight-semiBold);
+  cursor: help;
+}
+
+.badge.aqi-1 {
+  background-color: var(--bg-aqi-1);
+  color: var(--on-bg-aqi-1);
+}
+
+.badge.aqi-2 {
+  background-color: var(--bg-aqi-2);
+  color: var(--on-bg-aqi-2);
+}
+
+.badge.aqi-3 {
+  background-color: var(--bg-aqi-3);
+  color: var(--on-bg-aqi-3);
+}
+
+.badge.aqi-4 {
+  background-color: var(--bg-aqi-4);
+  color: var(--on-bg-aqi-4);
+}
+
+.badge.aqi-5 {
+  background-color: var(--bg-aqi-5);
+  color: var(--on-bg-aqi-5);
+}
+
+.highlight-card.two .card-item {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.highlight-card.two .label-1 { margin-block-end: 4px; }
 
