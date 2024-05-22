@@ -414,7 +414,7 @@ export const updateWeather = function (lat, lon) {
         windLi.innerHTML = `
           <div class="card card-sm slider-card">
 
-            <p class="body-3">${module.getHours(dateTimeUnix, timezone)} PM</p>
+            <p class="body-3">${module.getHours(dateTimeUnix, timezone)}</p>
 
             <img src="./assets/images/weather_icons/direction.png" 
               width="48" height="48" 

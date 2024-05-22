@@ -18,7 +18,7 @@ Skystery
 
 * `Pressure`: Displays the atmospheric pressure in hPa (hectopascals).
 
-* `Visibility`: Indicates the current visibility range in kilometers or miles.
+* `Visibility`: Indicates the current visibility range in kilometers.
 * `Feels Like`: Provides the "feels like" temperature, considering wind chill or heat index.
 
 ### 5-Day Weather Forecast
@@ -46,4 +46,5 @@ $ git clone https://github.com/bevil/Skystery.git
 
 * Open the file `assets/js/api.js` and replace `api_key` with your key.
 
-4) Compile and run the app
+4) Run
+* Run the `index.html`
