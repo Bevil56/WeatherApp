@@ -959,7 +959,7 @@ article.container::-webkit-scrollbar-button{  height: 10px; }
   }
 
   article.container {
-    grid-template-columns: 380px minmax(0, 1fr);
+    grid-template-columns: 320px minmax(0, 1fr);
     gap: 40px;
   }
 
