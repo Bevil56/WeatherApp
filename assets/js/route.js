@@ -1,7 +1,7 @@
 "use strict";
 
 import { updateWeather, error404 } from "./app.js";
-const defaultLocation = "#/weather?lat=10.8333&lon=106.6667"; //Ho Chi Minh
+const defaultLocation = "#/weather?lat=21.0245&lon=105.8412"; //Ha Noi
 
 const currentLocation = function () {
     window.navigator.geolocation.getCurrentPosition(res => {

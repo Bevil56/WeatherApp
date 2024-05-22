@@ -103,9 +103,9 @@ const errorContent = document.querySelector("[data-error-content]");
  * @param {number} lon Longitude
  */
 export const updateWeather = function (lat, lon) {
-  // loading.style.display = "grid";
-  // container.style.overflowY = "hidden";
-  // container.classList.remove("fade-in");
+  loading.style.display = "grid";
+  container.style.overflowY = "hidden";
+  container.classList.remove("fade-in");
   errorContent.style.display = "none";
 
   const currentWeatherSection = document.querySelector(
@@ -217,14 +217,14 @@ export const updateWeather = function (lat, lon) {
 
                       <li class="card-item">
 
-                        <p class="title-1">${pm2_5.toPrecision(2)}</p>
+                        <p class="title-1">${pm2_5.toPrecision(3)}</p>
 
                         <p class="label-1">PM<sub>2.5</sub></p>
                       </li>
 
                       <li class="card-item">
 
-                        <p class="title-1">${so2.toPrecision(2)}</p>
+                        <p class="title-1">${so2.toPrecision(3)}</p>
 
                         <p class="label-1">SO<sub>2</sub></p>
 
@@ -232,7 +232,7 @@ export const updateWeather = function (lat, lon) {
 
                       <li class="card-item">
 
-                        <p class="title-1">${no2.toPrecision(2)}</p>
+                        <p class="title-1">${no2.toPrecision(3)}</p>
 
                         <p class="label-1">NO<sub>2</sub></p>
 
@@ -240,7 +240,7 @@ export const updateWeather = function (lat, lon) {
 
                       <li class="card-item">
 
-                        <p class="title-1">${o3.toPrecision(2)}</p>
+                        <p class="title-1">${o3.toPrecision(3)}</p>
 
                         <p class="label-1">O<sub>3</sub></p>
 
@@ -352,6 +352,143 @@ export const updateWeather = function (lat, lon) {
 
     });
 
+    /**
+     * HOURLY HIGHLIGHTS
+     */
+
+    fetchData(url.forecast(lat, lon), function (forecast) {
+
+      const {
+        list: forecastList,
+        city: { timezone }
+      } = forecast;
+
+      hourlySection.innerHTML = `
+        <h2 class="title-2">Today at</h2>
+
+        <div class="slider-container">
+
+          <ul class="slider-list" data-temp></ul>
+
+          <ul class="slider-list" data-wind>
+
+          </ul>
+
+        </div>
+      `;
+
+      for (const [index, data] of forecastList.entries()) {
+
+        if (index > 7) break;
+
+        const {
+          dt: dateTimeUnix,
+          main: { temp },
+          weather,
+          wind: { deg: windDirection, speed: windSpeed }
+        } = data
+        const [{ icon, description }] = weather
+
+        const tempLi = document.createElement("li");
+        tempLi.classList.add("slider-item");
+
+        tempLi.innerHTML = `
+            <div class="card card-sm slider-card">
+
+              <p class="body-3">${module.getHours(dateTimeUnix, timezone)}</p>
+
+              <img src="./assets/images/weather_icons/${icon}.png" 
+                width="48" height="48" 
+                loading="lazy" alt="${description}"   
+                class="weather-icon" title="${description}"/>
+
+            <p class="body-3">${parseInt(temp)}&deg;</p>
+
+          </div>
+        `;
+        hourlySection.querySelector("[data-temp]").appendChild(tempLi);
+
+        const windLi = document.createElement("li");
+        windLi.classList.add("slider-item");
+
+        windLi.innerHTML = `
+          <div class="card card-sm slider-card">
+
+            <p class="body-3">${module.getHours(dateTimeUnix, timezone)} PM</p>
+
+            <img src="./assets/images/weather_icons/direction.png" 
+              width="48" height="48" 
+              loading="lazy" alt="direction"   
+              class="weather-icon" 
+              style = "transform: rotate(${windDirection - 180}deg)"/>
+
+            <p class="body-3">${parseInt(module.mps_to_kmh(windSpeed))} km/h</p>
+
+          </div>
+        `;
+        hourlySection.querySelector("[data-wind]").appendChild(windLi);
+
+      }
+
+      /**
+       * 5 DAY FORECAST SECTION
+       */
+      
+        forecastSection.innerHTML = `
+        <h2 class="title-2" id="forecast-label">5 Days Forecast</h2>
+
+        <div class="card card-lg forecast-card">
+
+          <ul data-forecast-list>
+          
+          </ul>
+
+        </div>
+      `;
+
+      for (let i = 7, len = forecastList.length; i < len; i += 8) {
+
+        const {
+          main: { temp_max },
+          weather,
+          dt_txt
+        } = forecastList[i];
+        const [{ icon, description }] = weather
+        const date = new Date(dt_txt);
+
+        const li = document.createElement("li");
+        li.classList.add("card-item");
+
+        li.innerHTML = `
+        <div class="icon-wrapper">
+
+          <img
+            src="./assets/images/weather_icons/${icon}.png"
+            width="36"
+            height="36"
+            alt="${description}"
+            class="weather-icon"
+            title="${description}"/>
+
+          <span class="span">
+            
+            <p class="title-2">${parseInt(temp_max)}&deg<sub>C</sub></p>
+
+          </span>
+
+        </div>
+
+        <p class="label-1">${date.getDate()} ${module.monthNames[date.getMonth()]}</p>
+
+        <p class="label-1">${module.weekDayNames[date.getUTCDay()]}</p>
+        `;
+        forecastSection.querySelector("[data-forecast-list]").appendChild(li);
+      }
+
+      loading.style.display = "none";
+      container.style.overflowY = "overlay";
+      container.classList.add("fade-in");
+    });
   });
 };
 
