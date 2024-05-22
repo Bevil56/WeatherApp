@@ -2,29 +2,29 @@
   /**
     *COLOR
     */
-    --primary: #5493e0;
-    --on-primary: #100E17; 
-    --background: #131214;
-    --on-background: #EAE6F2;
-    --surface: #1D1C1F;
-    --on-surface: #DDDAE5;
-    --on-surface-variant: #7B7980; 
-    --on-surface-variant-2: #B9B6BF;
-    --outline: #3E3D40;
-    --bg-aqi-1: #89E589;
-    --on-bg-aqi-1: #1F331F;
-    --bg-aqi-2: #E5DD89;
-    --on-bg-aqi-2: #33311F;
-    --bg-aqi-3: #E5C089;
-    --on-bg-aqi-3: #332B1F;
-    --bg-aqi-4: #E58989;
-    --on-bg-aqi-4: #331F1F;
-    --bg-aqi-5: #E589B7;
-    --on-bg-aqi-5: #331F29;
-    --white: hsl(0, 0%, 100%);
-    --white-alpha-4: hsla(0, 0%, 100%, 0.04);
-    --white-alpha-8: hsla(0, 0%, 100%, 0.08);
-    --black-alpha-10: hsla(0, 0%, 0%, 0.1);
+    --primary: #0D71E1;
+    --on-primary: #FFFFFF;  /*  */
+    --background: #83AEDF; /*  92B3DA B5D0F1  AECCF1  131214 */
+    --on-background: #FFFFFF; /*   337CD3 EAE6F2 */
+    --surface: #568FD0; /* 598FD0 1D1C1F */
+    --on-surface: #FFFFFF;  /*   DDDAE5 */
+    --on-surface-variant: hsla(0, 0%, 100%, 0.81);  /*   7B7980 */
+    --on-surface-variant-2: hsla(0, 0%, 100%, 0.56);  /*   --white: hsl(0, 0%, 100%); */
+    --outline: #FFFFFF;   /*   --white: hsl(0, 0%, 100%); */
+    --bg-aqi-1: #82E436;    /*   --white: hsl(0, 0%, 100%); */
+    --on-bg-aqi-1: #1F331F;   /*   --white: hsl(0, 0%, 100%); */
+    --bg-aqi-2: #FFE383;    /*   --white: hsl(0, 0%, 100%); */
+    --on-bg-aqi-2: #33311F;   /*   --white: hsl(0, 0%, 100%); */
+    --bg-aqi-3: #E7C037;      /*   --white: hsl(0, 0%, 100%); */
+    --on-bg-aqi-3: #332B1F;   /*   --white: hsl(0, 0%, 100%); */
+    --bg-aqi-4: #E7A237;    /*   --white: hsl(0, 0%, 100%); */
+    --on-bg-aqi-4: #331F1F;   /*   --white: hsl(0, 0%, 100%); */
+    --bg-aqi-5: #E54239;    /*   --white: hsl(0, 0%, 100%); */
+    --on-bg-aqi-5: #331F29;   /*   --white: hsl(0, 0%, 100%); */
+    --white: hsl(0, 0%, 100%);    /*   --white: hsl(0, 0%, 100%); */
+    --white-alpha-8: hsla(0, 0%, 100%, 0.08);   /*   --white: hsl(0, 0%, 100%); */
+    --white-alpha-24: hsla(0, 0%, 100%, 0.24);   /*   --white: hsl(0, 0%, 100%); */
+    --black-alpha-10: hsla(0, 0%, 0%, 0.1);   /*   --white: hsl(0, 0%, 100%); */
 
   /* gradient color */
   --gradient-1: linear-gradient(
@@ -39,6 +39,10 @@
     hsla(260, 5%, 12%, 0.8) 65%,
     hsl(260, 5%, 12%) 100%
   );
+
+  --gradient-3: linear-gradient(180deg, rgba(131,174,223,1) 0%, rgba(196,221,250,1) 100%);
+  --gradient-4: linear-gradient(0deg, rgba(131,174,223,1) 0%, rgba(196,221,250,1) 100%);
+
 
   /**
   *TYPOGRAPHY
@@ -146,7 +150,7 @@ html {
 }
 
 body {
-  background-color: var(--background);
+  background: var(--gradient-3);
   color: var(--on-background);
   font-size: var(--body-3);
   overflow: hidden;
@@ -157,16 +161,16 @@ body {
 }
 
 ::selection {
-  background-color: var(--white-alpha-8);
+  background-color: var(--white-alpha-24);
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--white-alpha-8);
+  background-color: var(--white-alpha-24);
   border-radius: var(--radius-pill);
 }
 
@@ -205,7 +209,7 @@ body {
 }
 
 .icon-btn {
-  background-color: var(--white-alpha-8);
+  background-color: var(--white-alpha-24);
   width: 48px;
   height: 48px;
   display: grid;
@@ -235,7 +239,7 @@ body {
 }
 
 .has-state:hover::before {
-  background-color: var(--white-alpha-4);
+  background-color: var(--white-alpha-24);
 }
 
 .has-state:is(:focus, :focus-visible)::before {
@@ -481,22 +485,23 @@ article.container::-webkit-scrollbar-thumb{
 }
 
 article.container:is(:hover, :focus-within)::-webkit-scrollbar-thumb{
-  background-color: var(--white-alpha-8);
+  background-color: var(--white-alpha-24);
 }
 
 article.container::-webkit-scrollbar-button{  height: 10px; }
 
-article.container::before{ 
+/* article.container::before{ 
   content:"";
   position: fixed;
   bottom: 0px;
   left: 0;
   width: 100%;
   height: 40px;
-  background-image: var(--gradient-1);
+  background-image: var(--gradient-4);
   pointer-events: none;
   z-index: 1;
-}
+  display: none;
+} */
 
 .section:not(:last-child){
   margin-block-end: 16px;
@@ -539,7 +544,7 @@ article.container::before{
   columns: var(--on-surface-variant);
 }
 
-/* #FORECAST HIGHLIGHTS  */
+/* #FORECAST 5-DAYS  */
 
 .forecast-card .title-2{ margin-block-end: 0;}
 
@@ -554,7 +559,7 @@ article.container::before{
 
 .forecast-card .icon-wrapper{ gap: 8px; }
 
-.forecast-card  .label-1{
+.forecast-card .label-1{
   color: var(--on-surface-variant);
   font-weight: var(--weight-semiBold);
 }
@@ -581,7 +586,7 @@ article.container::before{
 }
 
 .highlights .card-sm {
-  background-color: var(--black-alpha-10);
+  background-color: var(--white-alpha-24);
   position: relative;
 }
 
@@ -649,6 +654,8 @@ article.container::before{
   flex-wrap: wrap;
   gap: 8px 16px;
 }
+
+.highlight-card .title  { color: var(--on-surface-variant);; }
 
 .highlight-card.two .label-1 { margin-block-end: 4px; }
 
@@ -836,11 +843,9 @@ article.container::before{
    */
 
   :root {
-
     /* font size */
     --heading: 8rem;
     --title-2: 2rem;
-
   }
 
 
@@ -851,7 +856,7 @@ article.container::before{
 
   .container { padding: 40px; }
 
-  .card-lg { padding: 36px; }
+  .card-lg { padding: 36px;  }
 
   .card-sm { padding: 24px; }
 
@@ -867,11 +872,11 @@ article.container::before{
 
   .header .icon-btn { display: none; }
 
-  .logo img { width: 200px; }
+  .logo img { width: 210px; }
 
   .header {
     position: relative;
-    height: 120px;
+    height: 100px;
     z-index: 4;
   }
 
@@ -897,7 +902,7 @@ article.container::before{
   .search-view .view-list { background-color: var(--surface); }
 
   .search-field {
-    height: 56px;
+    height: 48px;
     border-radius: var(--radius-28);
   }
 
@@ -942,12 +947,12 @@ article.container::before{
    */
 
   main {
-    height: calc(100vh - 120px);
-    height: calc(100svh - 120px);
+    height: calc(100vh - 100px);
+    height: calc(100svh - 100px);
   }
 
   article.container {
-    grid-template-columns: 360px minmax(0, 1fr);
+    grid-template-columns: 380px minmax(0, 1fr);
     gap: 40px;
   }
 
